@@ -7,28 +7,21 @@ kubectl get nodes
 ```
 You should have 3 nodes
 ```
-NAME              STATUS    ROLES     AGE       VERSION
-ip-10-0-100-102   Ready     <none>    2d        v1.9.0
-ip-10-0-100-134   Ready     master    2d        v1.9.0
-ip-10-0-100-70    Ready     <none>    2d        v1.9.0
+NAME                                           STATUS   ROLES    AGE   VERSION
+ip-192-168-24-236.us-east-2.compute.internal   Ready    <none>   66m   v1.20.10-eks-3bcdcd
+ip-192-168-57-251.us-east-2.compute.internal   Ready    <none>   66m   v1.20.10-eks-3bcdcd
+ip-192-168-92-129.us-east-2.compute.internal   Ready    <none>   66m   v1.20.10-eks-3bcdcd
 ```
 
 
 Set a label on the last node 
 ```
-kubectl label nodes <ip-10-0-100-70> disktype=ssd
+kubectl label nodes <ip-192-168-92-129.us-east-2.compute.internal> disktype=ssd
 ```
 
 Check to make sure node label was applied 
 ```
 kubectl get nodes --show-labels
-```
-
-```
-NAME              STATUS    ROLES     AGE       VERSION   LABELS
-ip-10-0-100-102   Ready     <none>    2d        v1.9.0    beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=ip-10-0-100-102
-ip-10-0-100-134   Ready     master    2d        v1.9.0    beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=ip-10-0-100-134,node-role.kubernetes.io/master=
-ip-10-0-100-70    Ready     <none>    2d        v1.9.0    beta.kubernetes.io/arch=amd64,beta.kubernetes.io/os=linux,kubernetes.io/hostname=ip-10-0-100-70
 ```
 
 Review YAML. Notice the `nodeSelector`
@@ -89,9 +82,9 @@ node-affinity-589d989958-tnvlq   1/1     Running   0          1m    100.96.1.13 
 ``` 
 
 ## Cleanup
-Delete nginx POD
 ```
 kubectl delete pod nginx 
+kubectl delete -f manifests/node-affinity.yaml
 ```
 
 ## Pod Affinity/Anti-Affinity
@@ -194,19 +187,28 @@ To confirm run:
 
 Best practice is to configure these highly available stateful workloads such as Redis with AntiAffinity rules for more guaranteed spreading.
 
+Delete both deployments
+```sh
+kubectl delete -f manifests/anti_and_affinity.yaml
+kubectl delete -f manifests/affinity.yaml
+```
+
 ## Simplified example
 To help understand what just happened here is a simplified example of using `podAffinity` and `podAntiAffinity`. 
 
-Start by looking in `02-affinity/manifests` and you'll see `pod-affinity.yaml`. This manifest creates 2 deployments, a simple demo application and a `redis` datastore. 
+The `pod-affinity.yaml` manifest creates 2 deployments, a simple demo application and a `redis` datastore. 
 
 The manifest deploys `pod-affinity-1` without any special labels, but if you look at `pod-affinity-2` you'll see that it is required to run on the same node as `pod-affinity-1`.   
 
 ```
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-1
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-1
   replicas: 1
   template:
     metadata:
@@ -220,11 +222,14 @@ spec:
         - name: nodejs-port
           containerPort: 3000
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: pod-affinity-2
 spec:
+  selector:
+    matchLabels:
+      app: pod-affinity-2
   replicas: 1
   template:
     metadata:
@@ -276,7 +281,7 @@ Now update the `pod-affinity.yaml` file so that `topologykey` is:
 topologyKey: "failure-domain.beta.kubernetes.io/zone" 
 ```
 
-Redeploy and you will see the Pods are scheduled onto all the nodes because our cluster is only in one zone. 
+Redeploy and you will see the Pods are scheduled onto one node because each node in our cluster is in a different zone.
 
 You can also scale replicas to 5
 ```
@@ -309,7 +314,7 @@ Now deploy and confirm it works.
 kubectl apply -f manifests/pod-anti-affinity.yaml
 ```
 
-You will now see that 4 deployments were created.  We are going to look at the first 3 and will touch on the 4th in a bit. 
+You will now see that 4 deployments were created. 
 
 For our 2 deployments we can see they were scheduled to the same node. 
 
@@ -347,8 +352,7 @@ Using Anti-Affinity we can specify that each of the DB-REPLICAs will be on separ
 ## Cleanup
 Delete deployments
 ```
-kubectl delete deployment redis-cache web-server
-kubectl delete deployment pod-affinity-1 pod-affinity-2 pod-affinity-3 pod-affinity-4 pod-affinity-5
+kubectl delete -f manifests/pod-anti-affinity.yaml
 ```
 
 # Taint and Tolerations Lab
@@ -400,21 +404,21 @@ In this lab we will be applying a taint and then showing how only PODs with an e
 `kubectl get nodes`
 
 ```
-NAME              STATUS    ROLES     AGE       VERSION
-ip-10-0-100-102   Ready     <none>    1d        v1.9.0
-ip-10-0-100-134   Ready     master    1d        v1.9.0
-ip-10-0-100-70    Ready     <none>    1d        v1.9.0
+NAME                                           STATUS   ROLES    AGE   VERSION
+ip-192-168-24-236.us-east-2.compute.internal   Ready    <none>   66m   v1.20.10-eks-3bcdcd
+ip-192-168-57-251.us-east-2.compute.internal   Ready    <none>   66m   v1.20.10-eks-3bcdcd
+ip-192-168-92-129.us-east-2.compute.internal   Ready    <none>   66m   v1.20.10-eks-3bcdcd
 ```
 
 Apply a taint to the top node. 
 ```
-kubectl taint nodes ip-10-0-100-102 dedicated=lab:NoSchedule
+kubectl taint nodes ip-192-168-24-236.us-east-2.compute.internal dedicated=lab:NoSchedule
 ```
 
 ## Deploy nginx without toleration
 
 ```
-apiVersion: apps/v1beta2 
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
@@ -423,7 +427,7 @@ spec:
     matchLabels:
       app: nginx
   replicas: 3
-  template: 
+  template:
     metadata:
       labels:
         app: nginx
@@ -442,20 +446,21 @@ kubectl apply -f manifests/nginx_deployment.yaml
 You’ll notice it does not get scheduled to the node we tainted above. 
 
 ## Update YAML to allow scheduling on tainted node. 
+Edit `manifests/nginx_taint.yaml` and apply a toleration.
 ```
-apiVersion: apps/v1beta2 
+apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-taint
+  name: nginx-deployment
 spec:
   selector:
     matchLabels:
-      app: nginx-taint
+      app: nginx
   replicas: 3
-  template: 
+  template:
     metadata:
       labels:
-        app: nginx-taint
+        app: nginx
     spec:
       tolerations:
       - key: "dedicated"
@@ -463,7 +468,7 @@ spec:
         value: "lab"
         effect: "NoSchedule"
       containers:
-      - name: nginx-taint
+      - name: nginx
         image: nginx:1.7.9
         ports:
         - containerPort: 80
@@ -498,6 +503,7 @@ kubectl taint nodes ip-10-0-100-102 dedicated-
 
 ## Cleanup 
 ```
-kubectl delete deployment nginx-deployment nginx-taint
+kubectl delete -f manifests/nginx_deployment.yaml
+kubectl delete -f manifests/nginx_taint.yaml
 ```
 
