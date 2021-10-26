@@ -33,15 +33,15 @@ sudo mv /usr/local/bin/helm $HOME/.local/bin
 ## Deploy EKS cluster 
 Now that all of the utilities are installed let's get started creating a cluster! 
 
+Deploy EKS (remember to replace "your initials") 
 ```sh
-Deploy EKS
 eksctl create cluster \
 --name eks-cluster-<your initials> \
 --nodegroup-name standard-workers \
 --node-type t3.medium \
 --nodes 3 \
 --nodes-min 1 \
---nodes-max 4 \
+--nodes-max 4
 ```
 
 After the command completes, list the nodes: 
