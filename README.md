@@ -24,3 +24,8 @@ Lab 6: [Deploy a simple app](labs/pods)
 ### Day 3   
 Lab 7: [Deploy a multi-tier app](labs/deployments)   
 Lab 8: [Scheduling workloads](labs/scheduling)   
+
+### Day 4   
+Lab 9: [ConfigMaps](labs/configmap)  
+Lab 10:[Secrets](labs/secrets)   
+Lab 11:[Helm](labs/helm)   

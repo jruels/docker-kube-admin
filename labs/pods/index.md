@@ -46,7 +46,7 @@ kubectl get pod nginx-pod-lab -o json
 
 8. Now get info about it in `YAML` syntax
 ```
-kubectl get pod nginx-pod-lab -o yml
+kubectl get pod nginx-pod-lab -o yaml
 ```
 
 9. Delete everything! 
@@ -176,6 +176,11 @@ SHOW databases;
 5. Exit container
 ```
 exit
+```
+
+6. Cleanup everything 
+```
+kubectl delete pods --all
 ```
 
 ## Lab complete
