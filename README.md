@@ -30,3 +30,8 @@ Lab 8: [Scheduling workloads](labs/scheduling)
 Lab 9: [ConfigMaps](labs/configmap)  
 Lab 10:[Secrets](labs/secrets)   
 Lab 11:[Helm](labs/helm)   
+
+### Day 5   
+Lab 12: [Horizontal Pod Autoscaler](labs/hpa)  
+Lab 13: [Vertical Pod Autoscaler](labs/vpa)   
+Lab 14: [Persistent Storage](labs/persistent-storage)   
