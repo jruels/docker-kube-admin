@@ -8,6 +8,7 @@ This site includes the slides and labs for the Docker Kubernetes Admin class.
 [Slides Day 3](https://www.dropbox.com/s/m0z9yyfav05pdvy/Kube-Admin-day3.pdf?dl=0)   
 [Slides Day 4](https://www.dropbox.com/s/vnac8z0vsov0df2/Kube-Admin-day4.pdf?dl=0)   
 [Slides Day 5](https://www.dropbox.com/s/1p845kpgykln2jh/Kube-Admin-day5.pdf?dl=0)   
+[Slides Day 6](https://www.dropbox.com/s/xmbpq2ax9k9ht7g/Kube-Admin-day6.pdf?dl=0)   
 
 ## Labs
 [Lab VMs](https://docs.google.com/spreadsheets/d/1hqMfSpDqjohHlOX_bwkYhIvntLVW6E8ktLa3uQLHL7k/edit?usp=sharing)   
@@ -36,3 +37,7 @@ Lab 11:[Helm](labs/helm)
 Lab 12: [Horizontal Pod Autoscaler](labs/hpa)  
 Lab 13: [Vertical Pod Autoscaler](labs/vpa)   
 Lab 14: [Persistent Storage](labs/persistent-storage)   
+
+### Day 6   
+Lab 15: [Health Checks](labs/health-checks)   
+Lab 16: [Stateful Applications](labs/stateful)    
