@@ -76,7 +76,7 @@ cidr_range=$(aws ec2 describe-vpcs \
 ```
 
 Create a security group with an inbound rule that allows inbound NFS traffic for your Amazon EFS mount points.
-	1. Create a security group. 
+Create a security group. 
 ```sh
 security_group_id=$(aws ec2 create-security-group \
     --group-name MyEfsSecurityGroup \
@@ -85,7 +85,8 @@ security_group_id=$(aws ec2 create-security-group \
     --output text)
 ```
 
-	2. Create an inbound rule that allows inbound NFS traffic from the CIDR for your cluster's VPC.
+Create an inbound rule that allows inbound NFS traffic from the CIDR for your cluster's VPC.
+
 ```sh
 aws ec2 authorize-security-group-ingress \
     --group-id $security_group_id \
