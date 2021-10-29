@@ -41,3 +41,4 @@ Lab 14: [Persistent Storage](labs/persistent-storage)
 ### Day 6   
 Lab 15: [Health Checks](labs/health-checks)   
 Lab 16: [Stateful Applications](labs/stateful)    
+Lab 17: [Init Containers](labs/init)    
