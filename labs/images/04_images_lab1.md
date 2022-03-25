@@ -33,7 +33,7 @@ docker search wordpress. This will list all of the repositories within Docker Hu
 ### 2. Deploy WordPress All-In-One and the WordPress CLI
 Step by Step Guide
 1.	In the command line, enter the following command to deploy the WordPress All-In-One container. In the following steps, this WordPress all-in-one will receive a WordPress tool called the "WordPress CLI." This tools allows WordPress administrators to interact with their WordPress deployment using the command-line.  
-    `docker run -d -P --name wpaio shaunassam/wpaio-ubuntu1804`  
+    `docker run -d -P --name wpaio aslaen/wpaio`  
 The last line of output will be a container ID.  
 
 2.	Run the following command to validate that WordPress CLI is not installed.  
@@ -109,9 +109,7 @@ If it is working correctly, it will output this:
     `docker commit -m "added wpcli" wpaio <dockerhubusername>/wordpress-cli:aio-manual`  
 The output will be a new image ID.
 
-3. 	Log in to your account on Docker Hub, so that you can access the registry:  
-    `docker login`  
-You will need to enter the username and password you used when you created your account, as follows:  
+3. You will need to enter the username and password you used when you created your account, as follows:  
     `docker login`  
 Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to [Docker Hub](https://hub.docker.com) to create one.  
     `Username: <dockerhubusername>`  
