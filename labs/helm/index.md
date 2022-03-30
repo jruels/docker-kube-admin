@@ -178,12 +178,19 @@ We now need to update `demo-app/templates/deployment.yaml` and remove the `liven
 
 ### Check syntax 
 Now we need to confirm the changes we made are valid
+
+Rename the `demo-app` to `helm-demo-app` to match our `Chart.yaml`
 ```
-helm lint demo-app
+mv demo-app helm-demo-app
+```
+
+Run `lint` to check syntax
+```
+helm lint helm-demo-app
 ```
 
 ```
-==> Linting demo-app
+==> Linting helm-demo-app
 [INFO] Chart.yaml: icon is recommended
 
 1 chart(s) linted, 0 chart(s) failed
@@ -194,7 +201,7 @@ If there were no errors continue with the lab.
 ### Package Helm chart 
 Now that we have adapted the chart configuration to our needs and it is time to package our Helm Chart. Execute the following command, it will search for a directory with the name of the Helm Chart from where it is issued:
 ```
-helm package demo-app
+helm package helm-demo-app
 ```
 
 The package is being created (a `tar.gz` file) and the following response is shown:
