@@ -22,7 +22,8 @@ aws iam create-policy \
 ```
 
 Create an IAM role and attach the IAM policy to it. Annotate the Kubernetes service account with the IAM role ARN and the IAM role with the Kubernetes service account name.
-**Replace CLUSTER_NAME**
+You can find the **Account ID** by clicking the student account name in the top right hand corner (e.g. aws-student-56)
+**Replace CLUSTER_NAME and Account ID>**
 ```sh
 eksctl create iamserviceaccount \
     --name efs-csi-controller-sa \
