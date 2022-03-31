@@ -90,7 +90,7 @@ Create the new HPA:
 kubectl create -f ./podinfo/podinfo-hpa.yaml
 ```
 
-After a few seconds the HPA controller quries the metrics server and then fetches the CPU 
+After a few seconds the HPA controller queries the metrics server and then fetches the CPU 
 and memory usage:
 
 ```bash
