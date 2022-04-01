@@ -12,7 +12,7 @@ Create a working directory for all of our manifest files.
 ```sh
 export EBS_CSI_POLICY_NAME="Amazon_EBS_CSI_Driver"
 
-mkdir ${HOME}/environment/ebs_statefulset
+mkdir -p ${HOME}/environment/ebs_statefulset
 cd ${HOME}/environment/ebs_statefulset
 ```
 

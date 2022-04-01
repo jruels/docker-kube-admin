@@ -23,7 +23,7 @@ aws iam create-policy \
 
 Create an IAM role and attach the IAM policy to it. Annotate the Kubernetes service account with the IAM role ARN and the IAM role with the Kubernetes service account name.
 You can find the **Account ID** by clicking the student account name in the top right hand corner (e.g. aws-student-56)
-**Replace CLUSTER_NAME and Account ID>**
+**Replace CLUSTER_NAME and Account ID**
 ```sh
 eksctl create iamserviceaccount \
     --name efs-csi-controller-sa \
@@ -167,7 +167,7 @@ aws efs describe-file-systems --file-system-id $file_system_id
 ```
 
 
-Check the LifeCycleState of the mount targets using the following command and wait until it changes from creating to available before you proceed to the next step. It will take a few minutes for all the mount targets to transition to **available** state. You may also check on the status of mount targets from the EFS Dashboard on the AWS Management Console. Select the file system you just created:
+You may also check on the status of mount targets from the EFS Dashboard on the AWS Management Console. Select the file system you just created:
 
 
 ![](index/DB636397-109F-4EAD-8471-E0EB178D094B.png)
