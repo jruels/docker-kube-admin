@@ -268,7 +268,7 @@ mysql-1   1/2       Running   0          12m
 
 Notice only one container is in a `READY` state. 
 
-**mysql-read** load balancer detects failures and takes action by not sending traffic to the failed container, `@@server_id 101`. You can check this by the loop running in the separate window from previous section. The loop shows the following output.
+**mysql-read** load balancer detects failures and takes action by not sending traffic to the failed container, `@@server_id 101`. You can check this by viewing the loop running in the separate window from previous section. The loop shows the following output.
 
 ```
 +-------------+---------------------+
