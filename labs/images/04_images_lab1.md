@@ -125,9 +125,10 @@ Login Succeeded
 6.	Run the following to get the dynamic port mapping of the newly deployed container.   
     `docker port wpaio2`  
 Two ports will be listed:  
-3306/tcp -> 0.0.0.0:32769  
-80/tcp -> 0.0.0.0:32770
-
+    ```
+    3306/tcp -> 0.0.0.0:32769  
+    80/tcp -> 0.0.0.0:32770
+    ```
 7.	In a web browser, navigate to http://`<IP_Address>`:port using the local host IP address of your machine and the port mapped to 80/tcp from the previous step (i.e. 32770).
 
 8.	Configure WordPress again with the same credentials as before:  
