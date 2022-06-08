@@ -9,26 +9,20 @@ Lab Structure - Overview
 3.	Add WordPress CLI
 
  
-### 1. Search Docker Hub for Images
+### 1. Get familiar with Docker Hub
 Step by Step Guide
-1.	In a web browser, navigate to http://hub.docker.com and log in to Docker Hub. Creating a Docker Hub account is free and simple if you do not have one already.
+1.	In a web browser, navigate to log in to [Docker Hub](https://hub.docker.com). Creating a Docker Hub account is free and simple if you do not have one already.
 
-2.	Once logged in to Docker Hub, use the Search bar at the top to locate the official WordPress image.
+2.	Once logged in to Docker Hub, use the Search bar to search for WordPress.
 
-3.	Select the wordpress image with the official tag below it.
+3.	Select the wordpress image with the official tag.
 
 4.	Here you can see all the information about this repository. Next, click on the Tags tab.
 
 5.	This tab shows a list of all the images that have been tagged in this repository.
 
-6.	Search for nginx and select one of the repositories to see more details.
-
-7.	Look on the page for a link to the repo. Open this and review the Dockerfile.
-
-8.	This is where the information about the base image and repository maintainer is located, as well as the build code.
-
-9.	You can also search for an image using the CLI. From a command line running Docker, enter 
-docker search wordpress. This will list all of the repositories within Docker Hub without having to go through the web browser.
+6.	You can also search for an image using the CLI. From a command line running Docker, enter 
+``docker search wordpress``. This will list all of the repositories within Docker Hub without having to go through the web browser.
 
 ### 2. Deploy WordPress All-In-One and the WordPress CLI
 Step by Step Guide
@@ -147,7 +141,7 @@ The output should remain the same:
     twentythirteen	inactive	available	1.8
     twentytwelve	inactive	available	1.9
     ```
-This validates that the WordPress CLI is already installed on the image. The image wordpress-cli:aio-manual was created from the read/write layer of the previous container wpaio; which, had the WordPress CLI installed on it. 
+This validates that the WordPress CLI is already installed on the image. The image ``wordpress-cli:aio-manual`` was created from the read/write layer of the previous container ``wpaio``; which, had the WordPress CLI installed on it. 
 
 10.	Return to view your Docker Hub account in a web browser. Find the repository for the image you pushed, and view the information you can now edit. What statistics is Docker Hub reporting for the repository?
 
