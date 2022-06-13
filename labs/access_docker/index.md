@@ -16,6 +16,7 @@ ssh -i /path/to/lab.pem ubuntu@<LAB IP>
 
 ## Windows 
 Download `lab.ppk` from `keys` directory
+
 The username for SSH is `ubuntu`
 
 Open Putty and configure a new session. 
