@@ -42,7 +42,15 @@ Should see something like this
 ```
 1) "maxmemory"
 2) "2097152"
-127.0.0.1:6379> CONFIG GET maxmemory-policy
+```
+
+Now check the `maxmemory-policy`
+```
+CONFIG GET maxmemory-policy
+```
+
+Output:
+```
 1) "maxmemory-policy"
 2) "allkeys-lru"
 ```

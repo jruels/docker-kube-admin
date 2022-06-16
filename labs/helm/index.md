@@ -24,7 +24,7 @@ sudo mv /usr/local/bin/helm $HOME/.local/bin
 
 Helm  simplifies installing, managing, updating and removing applications on your Kubernetes cluster. 
 
-To search the 'artifact repo' for a chart you can simply run `helm search hub package`, for example if you want to search for wordpress run:
+To search the `artifact repo` for a chart you can simply run `helm search hub package`, for example if you want to search for wordpress run:
 ```
 helm search hub wordpress
 ```
@@ -164,7 +164,6 @@ spec:
 We now need to update `demo-app/templates/deployment.yaml` and remove the `liveness` and `readiness` probe sections. 
 ```yaml
 <snip..>
-              protocol: TCP
           livenessProbe:
             httpGet:
               path: /
