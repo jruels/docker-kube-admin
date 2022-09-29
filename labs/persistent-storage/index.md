@@ -350,7 +350,7 @@ After few seconds you can observe the controller picking up the change (edited f
 
 ```sh
 kubectl logs -n kube-system -l app=efs-csi-controller \
-    -c csi-provisioner
+    -c csi-provisioner \
     --tail 10
 ```
 
