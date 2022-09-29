@@ -15,6 +15,9 @@ Alias the new version of openssl
 sudo ln -s /usr/bin/openssl11 /usr/bin/openssl
 ```
 
+Because the AWS CloudShell has limited space, clone the repository to `/tmp/`
+cd `/tmp`
+
 Clone the autoscaler repository 
 ```
 git clone https://github.com/kubernetes/autoscaler.git
