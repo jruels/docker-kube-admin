@@ -17,7 +17,9 @@ sudo ln -s /usr/bin/openssl11 /usr/bin/openssl
 
 Because the AWS CloudShell has limited space, clone the repository to `/tmp/`   
 
-cd `/tmp`
+```
+cd /tmp
+```
 
 Clone the autoscaler repository 
 ```
