@@ -49,8 +49,6 @@ To view pods metrics run:
 kubectl get --raw "/apis/metrics.k8s.io/v1beta1/pods" | jq .
 ```
 
-### 
-
 ## Run and expose php-apache server
 
 To demonstrate a HorizontalPodAutoscaler, you will first start a Deployment that runs a container using the `hpa-example` image and expose it as a Service using the following manifest:
