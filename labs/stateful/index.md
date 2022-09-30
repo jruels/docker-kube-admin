@@ -16,9 +16,6 @@ mkdir -p ${HOME}/environment/ebs_statefulset
 cd ${HOME}/environment/ebs_statefulset
 ```
 
-### Create ConfigMap
- A ConfigMap  allows you to decouple configuration artifacts and secrets from image content to keep containerized applications portable. Using ConfigMaps, you can independently control the MySQL configuration.
-
 ### Create the mysql Namespace
 We will create a new Namespace called `mysql` that will host all the components.
 
@@ -27,11 +24,11 @@ kubectl create namespace mysql
 ```
 
 ### Create ConfigMap
+A ConfigMap  allows you to decouple configuration artifacts and secrets from image content to keep containerized applications portable. Using ConfigMaps, you can independently control the MySQL configuration.
+
 Run the following commands to create the ConfigMap.
 
 ```sh
-cd ${HOME}/environment/ebs_statefulset
-
 cat << EoF > ${HOME}/environment/ebs_statefulset/mysql-configmap.yaml
 apiVersion: v1
 kind: ConfigMap
@@ -62,7 +59,7 @@ kubectl create -f ${HOME}/environment/ebs_statefulset/mysql-configmap.yaml
 ```
 
 ### Create Services
-Service can be exposed in different ways by specifying a  `type` in the `serviceSpec`. `StatefulSet` currently requires a  Headless Service to control the domain of its Pods, directly reach each Pod with stable DNS entries.
+Services can be exposed in different ways by specifying a  `type` in the `serviceSpec`. `StatefulSet` currently requires a  Headless Service to control the domain of its Pods, directly reach each Pod with stable DNS entries.
 
 By specifying **“None”** for the clusterIP, you can create a Headless Service.
 
@@ -103,7 +100,7 @@ spec:
 EoF
 ```
 
-You can see the **mysql** service is for DNS resolution so that when pods are placed by StatefulSet controller, pods can be resolved using pod-name.mysql. **mysql-read** is a client service that does load balancing for all followers.
+You can see the **mysql** service is for DNS resolution so that when pods are placed by StatefulSet controller, pods can be resolved using ``pod-name.mysql``. **mysql-read** is a client service that does load balancing for all followers.
 
 
 Create service `mysql` and `mysql-read` by executing the following command
@@ -121,11 +118,10 @@ StatefulSet consists of serviceName, replicas, template and volumeClaimTemplates
 
 Download the manifest 
 ```sh
-cd ${HOME}/environment/ebs_statefulset
 wget https://eksworkshop.com/beginner/170_statefulset/statefulset.files/mysql-statefulset.yaml
 ```
 
-Update the manifest to use the correct `StorageClass`. 
+Update the manifest to use the correct `storageClassName`. 
 
 Change `mysql-gp2` to `gp2`
 
