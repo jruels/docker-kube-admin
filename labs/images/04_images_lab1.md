@@ -100,7 +100,7 @@ If it is working correctly, it will output this:
     ```
 
 2.	Now commit the WordPress CLI container to an image. This will commit the read/write layer of the running container to an image in the local image cache.  
-    `docker commit -m "added wpcli" wpaio <dockerhubusername>/wordpress-cli:aio-manual>`  
+    `docker commit -m "added wpcli" wpaio <dockerhubusername>/wordpress-cli:aio-manual`  
 The output will be a new image ID.
 
 3. You will need to enter the username and password you used when you created your account, as follows:  
