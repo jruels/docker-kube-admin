@@ -43,7 +43,7 @@ spec:
 
 Deploy application:
 ```
-kubectl create -f manifests/ssd_pod.yaml
+kubectl apply -f manifests/ssd_pod.yaml
 ```
 
 Confirm POD was assigned to node with label 

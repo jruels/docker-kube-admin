@@ -2,7 +2,7 @@
 
 ## Create ConfigMap for Redis Cache
 ```
-kubectl create configmap example-redis-config --from-file=config/redis-config
+kubectl apply configmap example-redis-config --from-file=config/redis-config
 ```
 
 ## Verify ConfigMap looks correct
@@ -29,7 +29,7 @@ metadata:
 
 ## Create Redis POD that uses ConfigMap
 ```
-kubectl create -f manifests/redis-pod.yaml
+kubectl apply -f manifests/redis-pod.yaml
 ```
 
 ## Confirm Redis POD launched with ConfigMap settings

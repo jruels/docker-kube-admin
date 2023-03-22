@@ -55,7 +55,7 @@ The ConfigMap stores `master.cnf`, `slave.cnf` and passes them when initializing
 
 Create `mysql-config` ConfigMap.
 ```sh
-kubectl create -f ${HOME}/environment/ebs_statefulset/mysql-configmap.yaml
+kubectl apply -f ${HOME}/environment/ebs_statefulset/mysql-configmap.yaml
 ```
 
 ### Create Services
@@ -105,7 +105,7 @@ You can see the **mysql** service is for DNS resolution so that when pods are pl
 
 Create service `mysql` and `mysql-read` by executing the following command
 ```sh
-kubectl create -f ${HOME}/environment/ebs_statefulset/mysql-services.yaml
+kubectl apply -f ${HOME}/environment/ebs_statefulset/mysql-services.yaml
 ```
 
 ### Create StatefulSet

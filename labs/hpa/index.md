@@ -460,7 +460,7 @@ spec:
 Then, create the autoscaler by executing the following command:
 
 ```shell
-kubectl create -f https://k8s.io/examples/application/hpa/php-apache.yaml
+kubectl apply -f https://k8s.io/examples/application/hpa/php-apache.yaml
 ```
 
 ## Congrats!

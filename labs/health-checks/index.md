@@ -147,7 +147,7 @@ The kubelet starts performing health checks 3 seconds after the Container starts
 
 To try the HTTP liveness check, create a Pod:
 ```
-kubectl create -f manifests/http-liveness.yaml
+kubectl apply -f manifests/http-liveness.yaml
 ```
 
 After 10 seconds, view Pod events to verify that liveness probes have failed and the Container has been restarted:

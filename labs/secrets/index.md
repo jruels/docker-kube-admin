@@ -10,7 +10,7 @@ echo -n "1f2d1e2e67df" > ./password.txt
 
 Now let’s create the secrets objects out of the files. 
 ```
-kubectl create secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
+kubectl apply secret generic db-user-pass --from-file=./username.txt --from-file=./password.txt
 ```
 
 Confirm secret was created 
@@ -62,7 +62,7 @@ data:
 
 Create a secret from above file 
 ```
-kubectl create -f ./secret.yaml
+kubectl apply -f ./secret.yaml
 ```
 
 ### Decoding Secrets
