@@ -2,7 +2,7 @@
 
 ## Create ConfigMap for Redis Cache
 ```
-kubectl apply configmap example-redis-config --from-file=config/redis-config
+kubectl create configmap example-redis-config --from-file=config/redis-config
 ```
 
 ## Verify ConfigMap looks correct
