@@ -251,7 +251,7 @@ Now let's upgrade the Helm chart to run 2 replicas
 
 In `values.yaml` change `replicaCount` from `1` to `2`
 
-We also need to change the Chart version number from `0.1.0` to `0.2.0` in the `Chart.yaml` to show we have made a significant change. 
+We also need to change the Chart version number from `0.0.1` to `0.1.0` in the `Chart.yaml` to show we have made a significant change. 
 
 Redeploy the Helm chart so it reads the new value. 
 ```
