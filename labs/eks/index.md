@@ -36,7 +36,7 @@ Now that all of the utilities are installed let's get started creating a cluster
 Deploy EKS (remember to replace "your initials") 
 ```sh
 eksctl create cluster \
---name eks-cluster-<your initials> \
+--name eks-cluster \
 --nodegroup-name standard-workers \
 --node-type t3.medium \
 --nodes 3 \
