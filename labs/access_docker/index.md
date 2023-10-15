@@ -1,6 +1,9 @@
 # Lab Setup 
+At the top of this page, right-click the "GitHub" button, and choose "open in new tab". In the new tab, in the top right corner, click the green “Code” button, then click “Download as zip”. Once the download is done, extract the zip file to somewhere you can easily access it.
+
 ## MacOS 
-Download `lab.pem` from the `keys` directory
+
+In the folder extracted from above, go to the `keys` folder and set the permissions of lab.pem`.
 
 ### Set permission on SSH key 
 ```
@@ -8,24 +11,24 @@ chmod 600 /path/to/lab.pem
 ```
 
 ### SSH to lab servers 
+Log into the servers provided by the instructor sing the `lab.pem` key file.
+
 The username for SSH is `ubuntu`
+
 ```
 ssh -i /path/to/lab.pem ubuntu@<LAB IP> 
 ```
 
 
 ## Windows 
-Download `lab.ppk` from `keys` directory
-
 The username for SSH is `ubuntu`
 
-Open Putty and configure a new session. 
-  
-![](index/C4EC1E64-175D-4C84-8C49-D938337FA35A.png)
+Open Putty and configure a new session for the VM.
 
-Expand “Connection_SSH_Auth and then specify the PPK file 
-![](index/6FFB137C-1AD8-48A1-97E6-F5F6DA4BC55B.png)
+![img](https://jruels.github.io/adv-ansible/labs/access_lab/images/putty-session.png)
 
- Now save your session    
+Expand Connection -> SSH -> Auth -> Credentials, click “Browse”, and then choose the `lab.ppk` file from the `keys` directory
 
-![](index/FD3BA694-FD69-4C86-8EAF-4D5FC813EABA.png)
+![image-20230918185300995](https://jruels.github.io/adv-ansible/labs/access_lab/images/putty-auth.png)
+
+Remember to save your session.
