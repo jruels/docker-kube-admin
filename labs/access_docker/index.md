@@ -1,5 +1,5 @@
 # Lab Setup 
-At the top of this page, right-click the "GitHub" button, and choose "open in new tab". In the new tab, in the top right corner, click the green “Code” button, then click “Download as zip”. Once the download is done, extract the zip file to somewhere you can easily access it.
+At the top of this page, right-click the "View on GitHub" button, and choose "open in new tab". In the new tab, in the top right corner, click the green “Code” button, then click “Download as zip”. Once the download is done, extract the zip file to somewhere you can easily access it.
 
 ## MacOS 
 
