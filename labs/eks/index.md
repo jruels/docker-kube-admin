@@ -31,9 +31,8 @@ sudo mv /usr/local/bin/helm $HOME/.local/bin
 
 
 ## Deploy EKS cluster 
-Now that all of the utilities are installed let's get started creating a cluster! 
+Now that all the utilities are installed, let's start creating a cluster! 
 
-Deploy EKS (remember to replace "your initials") 
 ```sh
 eksctl create cluster \
 --name eks-cluster \
