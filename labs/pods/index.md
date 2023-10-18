@@ -42,7 +42,7 @@ kubectl get pods
 7. Get information about Pod in `json` format 
 ```
 kubectl get pod nginx-pod-lab -o json 
-``` 
+```
 
 8. Now get info about it in `YAML` syntax
 ```
@@ -54,8 +54,21 @@ kubectl get pod nginx-pod-lab -o yaml
 kubectl delete all --all
 ```
 
+
+
+### Clone the GitHub repository
+
+The lab files live in a GitHub repository. Clone it to the AWS CloudShell.
+
+```bash
+git clone https://github.com/jruels/docker-kube-admin.git
+```
+
+To determine which lab directory you should work from, look at the lab page URL in the browser. For example, this lab has a URL of `https://jruels.github.io/docker-kube-admin/labs/pods/`. This tells you the lab files are in GitHub repo directory `docker-kube-admin/labs/pods`
+
 ### Create Pod from manifest
-1. In the manifests directory you will find  `nginx-kube.yml` . This file will launch a simple nginx server. Deploy it with following:
+
+1. In the lab's manifests directory, you will find  `nginx-kube.yml` . This will launch a simple nginx server. Deploy it with following:
 ```
 kubectl apply -f manifests/nginx-kube.yml
 ```
