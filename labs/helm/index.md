@@ -30,7 +30,7 @@ helm search hub wordpress
 ```
 
 ## Create a new Helm chart 
-Now let's create a new chart `app-demo`
+Now let's create a new chart `demo-app`
 ```
 helm create demo-app
 ```
@@ -88,7 +88,7 @@ Now confirm everything is running:
 Check that Pods are running:
 ```
 kubectl get pods -l app.kubernetes.io/name=demo-app
-``` 
+```
 
 You should see one replica running 
 ```
